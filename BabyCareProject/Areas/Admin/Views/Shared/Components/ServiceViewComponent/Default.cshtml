@@ -1,0 +1,102 @@
+﻿@model List<ResultServiceDto>
+
+@if (Model != null && Model.Any())
+{
+    <!-- Service Start -->
+    <div class="container-fluid service py-5">
+        <div class="container py-5">
+            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">Neler Yapıyoruz</h4>
+                <h1 class="mb-5 display-3">Sizin İçin Özel Hizmetlerimiz</h1>
+            </div>
+            <div class="row g-5">
+                @foreach (var item in Model.OrderBy(x => x.Order))
+                {
+                    <div class="col-md-6 col-lg-6 col-xl-3 wow fadeIn" data-wow-delay="0.@(Model.IndexOf(item) * 2 + 1)s">
+                        <div class="text-center border-primary border bg-white service-item">
+                            <div class="service-content d-flex align-items-center justify-content-center p-4">
+                                <div class="service-content-inner">
+                                    @if (!string.IsNullOrEmpty(item.IconClass))
+                                    {
+                                        <div class="p-4"><i class="@item.IconClass fa-6x text-primary"></i></div>
+                                    }
+                                    else
+                                    {
+                                        <div class="p-4"><i class="fas fa-star fa-6x text-primary"></i></div>
+                                    }
+                                    <a href="#" class="h4">@item.Title</a>
+                                    <p class="my-3">@item.Description</p>
+                                    <a href="#" class="btn btn-primary text-white px-4 py-2 my-2 btn-border-radius">Daha Fazla</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+}
+else
+{
+    <!-- Service Start - DEFAULT -->
+    <div class="container-fluid service py-5">
+        <div class="container py-5">
+            <div class="mx-auto text-center wow fadeIn" data-wow-delay="0.1s" style="max-width: 700px;">
+                <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">Neler Yapıyoruz</h4>
+                <h1 class="mb-5 display-3">Okulumuzla Başlamak İçin Teşekkürler</h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeIn" data-wow-delay="0.1s">
+                    <div class="text-center border-primary border bg-white service-item">
+                        <div class="service-content d-flex align-items-center justify-content-center p-4">
+                            <div class="service-content-inner">
+                                <div class="p-4"><i class="fas fa-gamepad fa-6x text-primary"></i></div>
+                                <a href="#" class="h4">Eğitim & Oyun</a>
+                                <p class="my-3">Çocuklarınız için eğlenceli ve öğretici oyunlar sunuyoruz.</p>
+                                <a href="#" class="btn btn-primary text-white px-4 py-2 my-2 btn-border-radius">Daha Fazla</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="text-center border-primary border bg-white service-item">
+                        <div class="service-content d-flex align-items-center justify-content-center p-4">
+                            <div class="service-content-inner">
+                                <div class="p-4"><i class="fas fa-sort-alpha-down fa-6x text-primary"></i></div>
+                                <a href="#" class="h4">A'dan Z'ye Programlar</a>
+                                <p class="my-3">Kapsamlı eğitim programlarımızla çocuklarınızı destekliyoruz.</p>
+                                <a href="#" class="btn btn-primary text-white px-4 py-2 my-2 btn-border-radius">Daha Fazla</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="text-center border-primary border bg-white service-item">
+                        <div class="service-content d-flex align-items-center justify-content-center p-4">
+                            <div class="service-content-inner">
+                                <div class="p-4"><i class="fas fa-users fa-6x text-primary"></i></div>
+                                <a href="#" class="h4">Uzman Öğretmenler</a>
+                                <p class="my-3">Alanında uzman ve deneyimli öğretmen kadromuz.</p>
+                                <a href="#" class="btn btn-primary text-white px-4 py-2 my-2 btn-border-radius">Daha Fazla</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-xl-3 wow fadeIn" data-wow-delay="0.7s">
+                    <div class="text-center border-primary border bg-white service-item">
+                        <div class="service-content d-flex align-items-center justify-content-center p-4">
+                            <div class="service-content-inner">
+                                <div class="p-4"><i class="fas fa-user-nurse fa-6x text-primary"></i></div>
+                                <a href="#" class="h4">Ruh Sağlığı</a>
+                                <p class="my-3">Çocuklarınızın mental gelişimini destekliyoruz.</p>
+                                <a href="#" class="btn btn-primary text-white px-4 py-2 my-2 btn-border-radius">Daha Fazla</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+}

@@ -1,0 +1,47 @@
+﻿@model UpdateFooterInformationDto
+@{
+    ViewData["Title"] = "İletişim Bilgisi Düzenle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-edit"></i> İletişim Bilgisi Düzenle
+    </div>
+    <div class="card-body">
+        <form asp-action="UpdateFooterInformation" method="post">
+            <input type="hidden" asp-for="FooterInformationId">
+
+            <div class="mb-3">
+                <label class="form-label">Açıklama</label>
+                <textarea class="form-control" asp-for="Description" rows="4"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Adres</label>
+                <input type="text" class="form-control" asp-for="Address">
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Telefon</label>
+                    <input type="text" class="form-control" asp-for="Phone">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" asp-for="Email">
+                </div>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-warning">
+                    <i class="fas fa-save"></i> Güncelle
+                </button>
+                <a href="/Admin/FooterInformation/Index" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

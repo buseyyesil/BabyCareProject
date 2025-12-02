@@ -1,0 +1,69 @@
+﻿@model UpdateAboutDto
+
+@{
+    ViewData["Title"] = "Hakkımızda Düzenle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Hakkımızda Bilgisini Düzenle</h4>
+
+            <form asp-area="Admin"
+                  asp-controller="About"
+                  asp-action="UpdateAbout"
+                  method="post"
+                  class="forms-sample">
+
+                <input type="hidden" asp-for="AboutId" />
+
+                <div class="form-group">
+                    <label>Başlık</label>
+                    <input asp-for="Title" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Açıklama</label>
+                    <textarea asp-for="Description" rows="4" class="form-control"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Görsel URL</label>
+                    <input asp-for="ImageUrl" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label>Video URL</label>
+                    <input asp-for="VideoUrl" class="form-control" />
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 form-group">
+                        <label>Yıllık Deneyim</label>
+                        <input asp-for="YearsOfExperience" type="number" class="form-control" />
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>Mutlu Çocuk</label>
+                        <input asp-for="HappyChildren" type="number" class="form-control" />
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>Öğretmen Sayısı</label>
+                        <input asp-for="QualifiedTeachers" type="number" class="form-control" />
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>Aktif Program</label>
+                        <input asp-for="ActivePrograms" type="number" class="form-control" />
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-warning me-2">Güncelle</button>
+                <a asp-area="Admin"
+                   asp-controller="About"
+                   asp-action="Index"
+                   class="btn btn-light">Geri Dön</a>
+
+            </form>
+        </div>
+    </div>
+</div>

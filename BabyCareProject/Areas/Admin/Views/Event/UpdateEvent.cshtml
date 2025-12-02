@@ -1,0 +1,83 @@
+﻿@model UpdateEventDto
+@{
+    ViewData["Title"] = "Etkinlik Düzenle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-edit"></i> Etkinlik Düzenle
+    </div>
+    <div class="card-body">
+        <form asp-action="UpdateEvent" method="post">
+            <input type="hidden" asp-for="EventId">
+
+            <div class="mb-3">
+                <label class="form-label">Etkinlik Adı</label>
+                <input type="text" class="form-control" asp-for="Title">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Açıklama</label>
+                <textarea class="form-control" asp-for="Description" rows="4"></textarea>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Etkinlik Tarihi</label>
+                    <input type="date" class="form-control" asp-for="EventDate">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Saat</label>
+                    <input type="text" class="form-control" asp-for="EventTime">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Konum</label>
+                <input type="text" class="form-control" asp-for="Location">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Resim URL</label>
+                <input type="text" class="form-control" asp-for="ImageUrl">
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Yaş Aralığı (En Az)</label>
+                    <input type="number" class="form-control" asp-for="AgeRange">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Kapasite</label>
+                    <input type="number" class="form-control" asp-for="Capacity">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Sıra</label>
+                    <input type="number" class="form-control" asp-for="Order">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <div class="form-check mt-4">
+                        <input type="checkbox" class="form-check-input" asp-for="IsActive">
+                        <label class="form-check-label">Aktif</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-warning">
+                    <i class="fas fa-save"></i> Güncelle
+                </button>
+                <a href="/Admin/Event/Index" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+﻿@model BabyCareProject.Dtos.ProductDtos.CreateProductDto
+@{
+    ViewData["Title"] = "Yeni Program Ekle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-plus"></i> Yeni Program Ekle
+    </div>
+    <div class="card-body">
+        <form asp-action="CreateProduct" method="post">
+            <div class="mb-3">
+                <label class="form-label">Program Adı</label>
+                <input type="text" class="form-control" asp-for="Title" placeholder="Örn: Günlük İngilizce">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Açıklama</label>
+                <textarea class="form-control" asp-for="Description" rows="4" placeholder="Program açıklaması..."></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Fiyat (₺)</label>
+                <input type="number" step="0.01" class="form-control" asp-for="Price" placeholder="500.00">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Resim URL</label>
+                <input type="text" class="form-control" asp-for="ImageUrl" placeholder="~/BabyCare-1.0.0/img/program-1.jpg">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Eğitmen Adı</label>
+                <input type="text" class="form-control" asp-for="InstructorName" placeholder="Örn: Ayşe Yılmaz">
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Kaydet
+                </button>
+                <a href="/Admin/Product/Index" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Geri
+                </a>
+            </div>
+        </form>
+    </div>
+</div>

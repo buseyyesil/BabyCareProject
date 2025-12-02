@@ -1,0 +1,98 @@
+﻿@model List<BabyCareProject.Dtos.EventDtos.ResultEventDto>
+
+@{
+    ViewData["Title"] = "Etkinlikler";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var culture = new System.Globalization.CultureInfo("tr-TR");
+}
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-calendar-alt"></i> Etkinlik Listesi</span>
+        <a href="/Admin/Event/CreateEvent" class="btn btn-light btn-sm">
+            <i class="fas fa-plus"></i> Yeni Ekle
+        </a>
+    </div>
+
+    <div class="card-body">
+        @if (Model == null || !Model.Any())
+        {
+            <div class="alert alert-info mb-0">
+                Henüz etkinlik eklenmemiş. Sağ üstten <strong>“Yeni Ekle”</strong> butonuyla ekleyebilirsin.
+            </div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Görsel</th>
+                            <th>Başlık</th>
+                            <th>Açıklama</th>
+                            <th>Yer</th>
+                            <th>Tarih</th>
+                            <th>Saat</th>
+                            <th>Yaş</th>
+                            <th>Kapasite</th>
+                            <th>Sıra</th>
+                            <th>Durum</th>
+                            <th class="text-right">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            var item = Model[i];
+                            <tr>
+                                <td>@(i + 1)</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                    {
+                                        <img src="@item.ImageUrl"
+                                             alt="@item.Title"
+                                             style="width:70px;height:50px;object-fit:cover;"
+                                             class="rounded" />
+                                    }
+                                </td>
+                                <td>@item.Title</td>
+                                <td style="max-width:300px;">
+                                    <span class="d-inline-block text-truncate" style="max-width:290px;">
+                                        @item.Description
+                                    </span>
+                                </td>
+                                <td>@item.Location</td>
+                                <td>@item.EventDate.ToString("dd MMM yyyy", culture)</td>
+                                <td>@item.EventTime</td>
+                                <td>@item.AgeRange+</td>
+                                <td>@item.Capacity</td>
+                                <td>@item.Order</td>
+                                <td>
+                                    @if (item.IsActive)
+                                    {
+                                        <span class="badge badge-success">Aktif</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-danger">Pasif</span>
+                                    }
+                                </td>
+                                <td class="text-right">
+                                    <a href="/Admin/Event/UpdateEvent/@item.EventId" class="btn btn-sm btn-warning">
+                                        Güncelle
+                                    </a>
+                                    <a href="/Admin/Event/DeleteEvent/@item.EventId"
+                                       class="btn btn-sm btn-danger"
+                                       onclick="return confirm('Silmek istediğine emin misin?');">
+                                        Sil
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

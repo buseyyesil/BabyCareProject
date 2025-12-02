@@ -1,0 +1,70 @@
+﻿@model List<BabyCareProject.Dtos.InstructorDtos.ResultInstructorDto>
+
+@{
+    ViewData["Title"] = "Eğitmenler";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-users"></i> Eğitmen Listesi</span>
+        <a href="/Admin/Instructor/CreateInstructor" class="btn btn-light btn-sm">
+            <i class="fas fa-plus"></i> Yeni Eğitmen Ekle
+        </a>
+    </div>
+
+    <div class="card-body">
+        @if (Model == null || !Model.Any())
+        {
+            <div class="alert alert-info mb-0">
+                Henüz eğitmen eklenmemiş. Sağ üstten <strong>“Yeni Eğitmen Ekle”</strong> butonunu kullan.
+            </div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Profil</th>
+                            <th>Ad Soyad</th>
+                            <th>Ünvan</th>
+                            <th class="text-end">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            var item = Model[i];
+                            <tr>
+                                <td>@(i + 1)</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                    {
+                                        <img src="@item.ImageUrl"
+                                             alt="@item.FirstName @item.LastName"
+                                             style="width:45px;height:45px;object-fit:cover;"
+                                             class="rounded-circle" />
+                                    }
+                                </td>
+                                <td>@item.FirstName @item.LastName</td>
+                                <td>@item.Title</td>
+                                <td class="text-right">
+                                    <a href="/Admin/Instructor/UpdateInstructor/@item.InstructorId" class="btn btn-sm btn-warning">
+                                        Güncelle
+                                    </a>
+                                    <a href="/Admin/Instructor/DeleteInstructor/@item.InstructorId"
+                                       class="btn btn-sm btn-danger"
+                                       onclick="return confirm('Silmek istediğine emin misin?');">
+                                        Sil
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,85 @@
+﻿@model List<BabyCareProject.Dtos.ServiceDtos.ResultServiceDto>
+
+@{
+    ViewData["Title"] = "Hizmetler";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-cogs"></i> Hizmet Listesi</span>
+        <a href="/Admin/Service/CreateService" class="btn btn-light btn-sm">
+            <i class="fas fa-plus"></i> Yeni Ekle
+        </a>
+    </div>
+
+    <div class="card-body">
+        @if (Model == null || !Model.Any())
+        {
+            <div class="alert alert-info mb-0">
+                Henüz bir hizmet eklenmemiş. Sağ üstteki <strong>“Yeni Ekle”</strong> butonundan ekleyebilirsin.
+            </div>
+        }
+        else
+        {
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>İkon</th>
+                            <th>Başlık</th>
+                            <th>Açıklama</th>
+                            <th>Sıra</th>
+                            <th>Durum</th>
+                            <th class="text-right">İşlemler</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            var item = Model[i];
+                            <tr>
+                                <td>@(i + 1)</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(item.IconClass))
+                                    {
+                                        <i class="@item.IconClass fa-lg text-primary"></i>
+                                    }
+                                </td>
+                                <td>@item.Title</td>
+                                <td style="max-width: 350px;">
+                                    <span class="d-inline-block text-truncate" style="max-width: 340px;">
+                                        @item.Description
+                                    </span>
+                                </td>
+                                <td>@item.Order</td>
+                                <td>
+                                    @if (item.IsActive)
+                                    {
+                                        <span class="badge badge-success">Aktif</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge badge-danger">Pasif</span>
+                                    }
+                                </td>
+                                <td class="text-right">
+                                    <a href="/Admin/Service/UpdateService/@item.ServiceId" class="btn btn-sm btn-warning">
+                                        Güncelle
+                                    </a>
+                                    <a href="/Admin/Service/DeleteService/@item.ServiceId"
+                                       class="btn btn-sm btn-danger"
+                                       onclick="return confirm('Silmek istediğine emin misin?');">
+                                        Sil
+                                    </a>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>

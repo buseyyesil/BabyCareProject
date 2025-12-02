@@ -1,0 +1,122 @@
+﻿@model List<ResultAboutDto>
+
+@{
+    ViewData["Title"] = "Hakkımızda Yönetimi";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <span><i class="mdi mdi-information-outline"></i> Hakkımızda Alanı</span>
+
+           
+            @if (Model == null || !Model.Any())
+            {
+                <a asp-area="Admin"
+                   asp-controller="About"
+                   asp-action="CreateAbout"
+                   class="btn btn-primary btn-sm">
+                    <i class="mdi mdi-plus"></i> Yeni Hakkımızda Bilgisi Ekle
+                </a>
+            }
+        </div>
+
+        <div class="card-body">
+            @if (Model != null && Model.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Görsel</th>
+                                <th>Başlık</th>
+                                <th>Açıklama</th>
+                                <th>Deneyim</th>
+                                <th>Mutlu Çocuk</th>
+                                <th>Öğretmen</th>
+                                <th>Program</th>
+                                <th>Video</th>
+                                <th class="text-end">İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                var i = 0;
+                            }
+                            @foreach (var item in Model)
+                            {
+                                i++;
+                                <tr>
+                                    <td>@i</td>
+
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                        {
+                                            <img src="@item.ImageUrl"
+                                                 class="img-fluid rounded"
+                                                 style="width:70px;height:45px;object-fit:cover;" />
+                                        }
+                                    </td>
+
+                                    <td>@item.Title</td>
+
+                                    <td>
+                                        @item.Description?.Substring(0, Math.Min(item.Description.Length, 80))
+                                        @if (!string.IsNullOrEmpty(item.Description) && item.Description.Length > 80)
+                                        {
+                                            @("...")
+                                        }
+                                    </td>
+
+                                    <td>@item.YearsOfExperience</td>
+                                    <td>@item.HappyChildren</td>
+                                    <td>@item.QualifiedTeachers</td>
+                                    <td>@item.ActivePrograms</td>
+
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(item.VideoUrl))
+                                        {
+                                            <span class="badge bg-info">Var</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">Yok</span>
+                                        }
+                                    </td>
+
+                                    <td class="text-end">
+                                        <a asp-area="Admin"
+                                           asp-controller="About"
+                                           asp-action="UpdateAbout"
+                                           asp-route-id="@item.AboutId"
+                                           class="btn btn-warning btn-sm">
+                                            Güncelle
+                                        </a>
+
+                                        <a asp-area="Admin"
+                                           asp-controller="About"
+                                           asp-action="DeleteAbout"
+                                           asp-route-id="@item.AboutId"
+                                           class="btn btn-danger btn-sm"
+                                           onclick="return confirm('Hakkımızda bilgisini silmek istediğine emin misin?');">
+                                            Sil
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info mb-0">
+                    <i class="mdi mdi-information-outline"></i>
+                    Henüz hakkımızda bilgisi eklenmemiş. Yeni bilgi eklemek için yukarıdaki butona tıkla.
+                </div>
+            }
+        </div>
+    </div>
+</div>

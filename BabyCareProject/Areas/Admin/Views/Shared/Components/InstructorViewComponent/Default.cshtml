@@ -1,0 +1,42 @@
+﻿@model List<ResultInstructorDto>
+
+<div class="container-fluid team py-5">
+    <div class="container py-5">
+        <div class="mx-auto text-center" style="max-width: 600px;">
+            <h4 class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius">
+                Ekibimiz
+            </h4>
+            <h1 class="mb-5 display-3">Uzman Öğretmenlerimizle Tanışın</h1>
+        </div>
+
+        <div class="row g-5 justify-content-center">
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="team-item border border-primary img-border-radius overflow-hidden">
+                            <img src="@item.ImageUrl"
+                                 class="img-fluid w-100"
+                                 alt="@item.FirstName @item.LastName"
+                                 style="height: 300px; object-fit: cover;" />
+
+                            <div class="team-content text-center py-3">
+                                <h4 class="text-primary">@item.FirstName @item.LastName</h4>
+                                <p class="text-muted mb-2">@item.Title</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="col-12 text-center">
+                    <p class="text-muted">
+                        Henüz eğitmen eklenmemiş. Admin panelinden eğitmen eklediğinde burada görünecek.
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+﻿@model CreateServiceDto
+
+@{
+    ViewData["Title"] = "Yeni Hizmet Ekle";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-header">
+            Yeni Hizmet Ekle
+        </div>
+
+        <div class="card-body">
+            <form asp-area="Admin"
+                  asp-controller="Service"
+                  asp-action="CreateService"
+                  method="post"
+                  class="forms-sample">
+
+                <div class="form-group">
+                    <label>Başlık</label>
+                    <input asp-for="Title"
+                           class="form-control"
+                           placeholder="Örn: Eğitim & Oyun" />
+                </div>
+
+                <div class="form-group">
+                    <label>Açıklama</label>
+                    <textarea asp-for="Description"
+                              class="form-control"
+                              rows="4"
+                              placeholder="Hizmet açıklaması..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>İkon Class</label>
+                    <input asp-for="IconClass"
+                           class="form-control"
+                           placeholder="Örn: fas fa-gamepad" />
+                </div>
+
+                <div class="form-group">
+                    <label>Resim URL (opsiyonel)</label>
+                    <input asp-for="ImageUrl"
+                           class="form-control"
+                           placeholder="~/BabyCare-1.0.0/img/service-1.jpg" />
+                </div>
+
+                <div class="form-group">
+                    <label>Sıra</label>
+                    <input asp-for="Order"
+                           type="number"
+                           class="form-control" />
+                </div>
+
+                <div class="form-group form-check">
+                    <input asp-for="IsActive"
+                           type="checkbox"
+                           class="form-check-input" />
+                    <label class="form-check-label">Aktif</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary me-2">
+                    Kaydet
+                </button>
+
+                <a asp-area="Admin"
+                   asp-controller="Service"
+                   asp-action="Index"
+                   class="btn btn-light">
+                    Geri
+                </a>
+            </form>
+        </div>
+    </div>
+</div>

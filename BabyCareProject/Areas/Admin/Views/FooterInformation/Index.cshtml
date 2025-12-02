@@ -1,0 +1,43 @@
+﻿@model ResultFooterInformationDto
+@{
+    ViewData["Title"] = "İletişim Bilgileri";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <i class="fas fa-address-card"></i> İletişim Bilgileri
+    </div>
+    <div class="card-body">
+        @if (Model != null)
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Açıklama</h5>
+                    <p>@Model.Description</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>İletişim Detayları</h5>
+                    <p><i class="fas fa-map-marker-alt text-primary"></i> <strong>Adres:</strong> @Model.Address</p>
+                    <p><i class="fas fa-phone text-primary"></i> <strong>Telefon:</strong> @Model.Phone</p>
+                    <p><i class="fas fa-envelope text-primary"></i> <strong>Email:</strong> @Model.Email</p>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <a href="/Admin/FooterInformation/UpdateFooterInformation/@Model.FooterInformationId" class="btn btn-warning">
+                    <i class="fas fa-edit"></i> Düzenle
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-info">
+                <i class="fas fa-info-circle"></i> Henüz iletişim bilgisi eklenmemiş.
+            </div>
+            <a href="/Admin/FooterInformation/CreateFooterInformation" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Yeni Ekle
+            </a>
+        }
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿@model List<ResultBannerDto>
+
+@if (Model != null && Model.Any())
+{
+    var banner = Model.FirstOrDefault();
+
+    <!-- Hero Start -->
+    <div class="container-fluid py-5 hero-header wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-7 col-md-12">
+                    <h1 class="mb-3 text-primary">@banner.Title</h1>
+                    <h1 class="mb-5 display-1 text-white">@banner.Subtitle</h1>
+                    <a href="@banner.ButtonUrl" class="btn btn-primary px-4 py-3 px-md-5 me-4 btn-border-radius">@banner.ButtonText</a>
+                    <a href="#about" class="btn btn-primary px-4 py-3 px-md-5 btn-border-radius">Daha Fazla</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+}
+else
+{
+    <!-- Hero Start - DEFAULT -->
+    <div class="container-fluid py-5 hero-header wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-7 col-md-12">
+                    <h1 class="mb-3 text-primary">Çocuklarınıza En İyi Bakım</h1>
+                    <h1 class="mb-5 display-1 text-white">Çocuklarınız İçin En İyi Oyun Alanı</h1>
+                    <a href="#about" class="btn btn-primary px-4 py-3 px-md-5 me-4 btn-border-radius">Başlayın</a>
+                    <a href="#about" class="btn btn-primary px-4 py-3 px-md-5 btn-border-radius">Daha Fazla</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero End -->
+}
