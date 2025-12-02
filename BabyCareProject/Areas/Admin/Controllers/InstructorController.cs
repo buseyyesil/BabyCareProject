@@ -44,7 +44,6 @@ namespace BabyCareProject.Areas.Admin.Controllers
         {
             var value = await _instructorService.GetInstructorByIdAsync(id);
 
-            // Result → Update map
             var model = new UpdateInstructorDto
             {
                 InstructorId = value.InstructorId,

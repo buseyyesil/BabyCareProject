@@ -14,21 +14,19 @@ namespace BabyCareProject.Areas.Admin.Controllers
             _serviceService = serviceService;
         }
 
-        // Liste
+
         public async Task<IActionResult> Index()
         {
             var values = await _serviceService.GetAllServiceAsync();
             return View(values);
         }
 
-        // Create GET
+
         [HttpGet]
         public IActionResult CreateService()
         {
             return View();
         }
-
-        // Create POST
         [HttpPost]
         public async Task<IActionResult> CreateService(CreateServiceDto createServiceDto)
         {
@@ -36,7 +34,7 @@ namespace BabyCareProject.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        // Update GET
+ 
         [HttpGet]
         public async Task<IActionResult> UpdateService(string id)
         {
@@ -60,7 +58,7 @@ namespace BabyCareProject.Areas.Admin.Controllers
             return View(updateDto);
         }
 
-        // Update POST
+     
         [HttpPost]
         public async Task<IActionResult> UpdateService(UpdateServiceDto updateServiceDto)
         {
@@ -68,7 +66,7 @@ namespace BabyCareProject.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        // Silme
+
         public async Task<IActionResult> DeleteService(string id)
         {
             await _serviceService.DeleteServiceAsync(id);

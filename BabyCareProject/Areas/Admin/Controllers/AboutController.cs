@@ -38,10 +38,10 @@ namespace BabyCareProject.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: UpdateAbout
+    
         public async Task<IActionResult> UpdateAbout(string id)
         {
-            // Servisten gelen büyük ihtimalle ResultAboutDto
+            
             var value = await _AboutService.GetAboutByIdAsync(id);
 
             if (value == null)
@@ -49,7 +49,7 @@ namespace BabyCareProject.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            // Bunu basitçe UpdateAboutDto'ya çeviriyoruz
+        
             var model = new UpdateAboutDto
             {
                 AboutId = value.AboutId,
@@ -66,7 +66,7 @@ namespace BabyCareProject.Areas.Admin.Controllers
             return View(model);
         }
 
-        // POST: UpdateAbout
+     
         [HttpPost]
         public async Task<IActionResult> UpdateAbout(UpdateAboutDto updateAboutDto)
         {

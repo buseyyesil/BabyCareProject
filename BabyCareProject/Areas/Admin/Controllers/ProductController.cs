@@ -32,7 +32,7 @@ namespace BabyCareProject.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateProduct()
         {
-            // Şimdilik eğitmeni text girdiğin için ViewBag gerekmez
+           
             return View();
         }
 
