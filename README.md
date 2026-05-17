@@ -95,8 +95,9 @@
 #### Hakkımızda Bölümü
 ![Hakkımızda](screenshots/Ekran%20görüntüsü%202026-05-17%20152733.png)
 
+
 #### Hizmetler
-![Hizmetler](screenshots/Ekran%20görüntüsü%202026-05-17%20152743.png)
+![Hizmetler](screenshots/Ekran%20görüntüsü%202026-05-17%20152748.png)
 
 #### Programlar
 ![Programlar](screenshots/Ekran%20görüntüsü%202026-05-17%20152817.png)
